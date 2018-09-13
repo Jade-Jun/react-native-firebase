@@ -87,6 +87,8 @@ public class DisplayNotificationTask extends AsyncTask<Void, Void, Void> {
           notification.getString("sound")
         );
         nb = nb.setSound(sound);
+      } else {
+        nb = nb.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
       }
       if (notification.containsKey("subtitle")) {
         nb = nb.setSubText(notification.getString("subtitle"));
@@ -213,6 +215,8 @@ public class DisplayNotificationTask extends AsyncTask<Void, Void, Void> {
       if (android.containsKey("priority")) {
         Double priority = android.getDouble("priority");
         nb = nb.setPriority(priority.intValue());
+      } else {
+        nb = nb.setPriority(NotificationCompat.PRIORITY_MAX);
       }
       if (android.containsKey("progress")) {
         Bundle progress = android.getBundle("progress");
